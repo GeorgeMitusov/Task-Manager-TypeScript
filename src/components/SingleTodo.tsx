@@ -1,5 +1,6 @@
 import React from 'react';
 import { Todo } from './model';
+import { MdDone, MdEdit, MdDelete } from "react-icons/md";
 
 interface Props {
   todo: Todo,
@@ -9,9 +10,18 @@ interface Props {
 
 const SingleTodo = ({ todos, todo, setTodos } : Props) => {
   return (
-    <li>
-      { todo.todo }
-    </li>
+    <form className="todos__single">
+
+      <span className="todos__single--text"> { todo.todo } </span>
+
+      <div>
+        <span className="icon"> <MdEdit /> </span>
+        <span className="icon"> <MdDelete /> </span>
+        <span className="icon"> <MdDone /> </span>
+      </div>
+
+
+    </form>
   )
 }
 
