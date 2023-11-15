@@ -4,7 +4,7 @@ import { Todo } from './components/model';
 
 import InputField from './components/InputField';
 
-// 29 - 37
+// 29 - 37 - 41
 
 const App: React.FC = () => {
 
@@ -38,13 +38,19 @@ const App: React.FC = () => {
   return (
     <div className="App">
 
-      <span className='heading'> Taskify </span>
-
       <InputField 
         todo={todo} 
         setTodo={setTodo} 
         handleAdd={handleAdd}
       />
+
+      <div>
+
+        <ul>
+          {todos.map( el => <li> { el.todo } </li> )}
+        </ul>
+
+      </div>
 
     </div>
   );
