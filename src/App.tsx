@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import './styles/App.css';
-import { Todo } from './components/model';
 
+import { Todo } from './components/model';
+import TodoList from './components/TodoList';
 import InputField from './components/InputField';
 
-// 29 - 37 - 41
+// 29 - 37 - 41 - 44 
 
 const App: React.FC = () => {
 
   const [ todo, setTodo ] = useState <string> ("")
-  const [ todos, setTodos ] = useState <Todo []> ([])
+  const [ todos, setTodos ] = useState <Todo[]> ([])
 
   // UNION
   // const [ todo, setTodo ] = useState <string | number> ("")
@@ -44,13 +45,7 @@ const App: React.FC = () => {
         handleAdd={handleAdd}
       />
 
-      <div>
-
-        <ul>
-          {todos.map( el => <li> { el.todo } </li> )}
-        </ul>
-
-      </div>
+      <TodoList todos={todos} setTodos={setTodos} />
 
     </div>
   );
