@@ -32,7 +32,7 @@ const InputField = ({ todo, setTodo, handleAdd } : Props )  => {
         className='input__box'
       />
       <button
-        className='input__submit'
+        className='input_submit'
         type='submit'
       > Go! </button>
     </form>
