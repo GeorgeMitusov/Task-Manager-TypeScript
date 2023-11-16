@@ -2,12 +2,29 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Todo } from './model';
 import { MdDone, MdEdit, MdDelete } from "react-icons/md";
 
-const SingleTodo = () => {
+interface Props {
+  todo: Todo,
+  dispatch: React.Dispatch<any>
+}
 
+const SingleTodo = ({ todo, dispatch } : Props ) => {
+
+  function handleDone(id:number) {
+    dispatch({ type: 'complete', payload: id })
+  }
 
   return (
     <form className="todos__single">
+      <span 
+        className="todos__single--text" 
+        style={{ textDecoration: todo.isDone ? "line-through" : 'none' }}
+      > { todo.todo } </span>
 
+      <div>
+         <span className="icon" > <MdEdit /> </span>
+         <span className="icon" > <MdDelete /> </span>
+         <span className="icon" onClick={ () => handleDone(todo.id)}> <MdDone /> </span>
+       </div>
     </form>
   )
 }

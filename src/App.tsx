@@ -11,7 +11,7 @@ const App: React.FC = () => {
   const [ todos, dispatch ] = useReducer(reducer, [] as Todo[]);
   const [ todo, setTodo ] = useState<string>('');
 
-  function handleAdd(e:React.FormEvent) {
+  function handleAdd() {
     dispatch({ type: 'add', payload: todo });
     setTodo('');
   }
@@ -22,7 +22,7 @@ const App: React.FC = () => {
 
       <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
 
-      <TodoList todos={todos}  />
+      <TodoList todos={todos} dispatch={dispatch} />
       
     </div>
   );

@@ -10,6 +10,9 @@ export const reducer = ( state: Todo[], action: Actions ): Todo[] => {
         isDone: false
       }
       return [ ...state, newItem ];
+
+    case "complete":
+      return state.map( todo => todo.id === action.payload ? { ...todo, isDone: !todo.isDone } : todo )
   
     default:
       return state;
