@@ -5,7 +5,7 @@ import { Todo } from './components/model';
 import TodoList from './components/TodoList';
 import InputField from './components/InputField';
 
-// 29 - 37 - 41 - 44 - 47
+// 29 - 37 - 41 - 44 - 47 - 52 - 55 
 
 const App: React.FC = () => {
 
