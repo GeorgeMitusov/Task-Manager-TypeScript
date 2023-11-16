@@ -9,20 +9,64 @@ interface Props {
 
 const SingleTodo = ({ todo, dispatch } : Props ) => {
 
+  const [ isEdit, setIsEdit] = useState<Boolean>(false);
+  const [ editValue, setEditValue] = useState<string | number>(todo.todo);
+
   function handleDone(id:number) {
     dispatch({ type: 'complete', payload: id })
   }
 
+  function handleRemove(id:number) {
+    dispatch({ type: 'remove', payload: id })
+  }
+
+  function handleEditing() {
+    if ( !isEdit && !todo.isDone ) {
+      setIsEdit( !isEdit );
+    }
+  }
+
+  function handleSubmit(e: React.FormEvent, id: number) {
+    e.preventDefault();
+    console.log(e);
+    console.log(id);
+  }
+
+  const todoTitle = (
+    <span 
+      className="todos__single--text" 
+      style={{ textDecoration: todo.isDone ? "line-through" : 'none' }}
+    > { todo.todo } </span>
+  )
+
+  const todoInput = (
+    <input 
+      type="text"
+      value={editValue}
+      onChange={ e => setEditValue(e.target.value) }
+      className="todos-single-form-input" 
+    />
+  )
+
+  // const todoInput = (
+  //   <input 
+  //     type="text"
+  //     ref={inputRef}
+  //     value={editValue}
+  //     onChange={ e => setEditValue(e.target.value) }
+  //     onKeyDown={ e => handleEnterPress(e, todo.id) } 
+  //     className="todos-single-form-input" 
+  //   />
+  // )
+
   return (
-    <form className="todos__single">
-      <span 
-        className="todos__single--text" 
-        style={{ textDecoration: todo.isDone ? "line-through" : 'none' }}
-      > { todo.todo } </span>
+    <form className="todos__single" onSubmit={e => handleSubmit(e, todo.id)}>
+
+      { isEdit ? todoInput : todoTitle }
 
       <div>
-         <span className="icon" > <MdEdit /> </span>
-         <span className="icon" > <MdDelete /> </span>
+         <span className="icon" onClick={handleEditing}> <MdEdit /> </span>
+         <span className="icon"  onClick={ () => handleRemove(todo.id)}> <MdDelete /> </span>
          <span className="icon" onClick={ () => handleDone(todo.id)}> <MdDone /> </span>
        </div>
     </form>
