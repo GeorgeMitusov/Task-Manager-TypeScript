@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Todo } from './model';
 import { MdDone, MdEdit, MdDelete } from "react-icons/md";
@@ -12,7 +11,7 @@ interface Props {
 const SingleTodo = ({ todos, todo, setTodos } : Props) => {
 
   const [ isEdit, setIsEdit ] = useState <Boolean> (false);
-  const [ editValue, setEditValue ] = useState <string | number> ('');
+  const [ editValue, setEditValue ] = useState <string | number> (todo.todo);
 
 
   const handleDone = (id: number) => {
@@ -23,15 +22,8 @@ const SingleTodo = ({ todos, todo, setTodos } : Props) => {
     setTodos( todos.filter( todo => todo.id !== id ));
   }
 
-  const handleEdit = ( id?: number ) => {
+  const handleEdit = () => {
     setIsEdit( !isEdit );
-
-    if ( id ) {
-      const filteredTodo = todos.find( todo => todo.id === id);
-      if ( filteredTodo ) {
-        setEditValue(filteredTodo.todo);
-      }
-    }
   }
 
   const handleEnterPress = ( e: React.KeyboardEvent<HTMLInputElement>, id: number ) => {
@@ -46,10 +38,6 @@ const SingleTodo = ({ todos, todo, setTodos } : Props) => {
     }
   }
 
-  const handleInput = ( e: React.ChangeEvent<HTMLInputElement> ) => {
-    setEditValue(e.target.value);
-  }
-
   const todoTitle = (
     <span 
       className="todos__single--text" 
@@ -61,7 +49,7 @@ const SingleTodo = ({ todos, todo, setTodos } : Props) => {
     <input 
       type="text"
       value={editValue}
-      onChange={ e => handleInput(e) }
+      onChange={ e => setEditValue(e.target.value) }
       onKeyDown={ e => handleEnterPress(e, todo.id) } 
       className="todos-single-form-input" 
     />
@@ -73,7 +61,7 @@ const SingleTodo = ({ todos, todo, setTodos } : Props) => {
       { isEdit ? todoInput : todoTitle }
 
       <div>
-        <span className="icon" onClick={() => handleEdit(todo.id)}> <MdEdit /> </span>
+        <span className="icon" onClick={handleEdit}> <MdEdit /> </span>
         <span className="icon" onClick={() => handleDelete(todo.id)}> <MdDelete /> </span>
         <span className="icon" onClick={ () => handleDone(todo.id)}> <MdDone /> </span>
       </div>
