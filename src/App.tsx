@@ -1,55 +1,91 @@
-import React, { useState } from 'react';
+import React, { useReducer, useState } from 'react';
 import './styles/App.css';
 
+import InputField from './components/InputField';
+import { reducer } from './reducer/reducer';
 import { Todo } from './components/model';
 import TodoList from './components/TodoList';
-import InputField from './components/InputField';
-
-// 29 - 37 - 41 - 44 - 47 - 52 - 55 - 58
 
 const App: React.FC = () => {
 
-  const [ todo, setTodo ] = useState <string> ("")
-  const [ todos, setTodos ] = useState <Todo[]> ([])
+  const [ todos, dispatch ] = useReducer(reducer, [] as Todo[]);
+  const [ todo, setTodo ] = useState<string>('');
 
-  // UNION
-  // const [ todo, setTodo ] = useState <string | number> ("")
-
-  const handleAdd = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if ( todo ) {
-
-      let newItem: Todo = {
-        id: Date.now(),
-        todo,
-        isDone: false
-      }
-      
-      setTodos([
-        ...todos,
-        newItem
-      ])
-
-      setTodo('');
-
-    }
+  function handleAdd(e:React.FormEvent) {
+    dispatch({ type: 'add', payload: todo });
+    setTodo('');
   }
 
   return (
     <div className="App">
+      <h1 className="hi"> TASKIFY </h1>
 
-      <InputField 
-        todo={todo} 
-        setTodo={setTodo} 
-        handleAdd={handleAdd}
-      />
+      <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
 
-      <TodoList todos={todos} setTodos={setTodos} />
-
+      <TodoList todos={todos}  />
+      
     </div>
   );
 
 }
 
 export default App;
+
+
+
+
+// import React, { useReducer, useState } from 'react';
+// import './styles/App.css';
+
+// import { Todo } from './components/model';
+// import TodoList from './components/TodoList';
+// import InputField from './components/InputField';
+// import { reducer } from './reducer/reducer';
+
+// // 29 - 37 - 41 - 44 - 47 - 52 - 55 - 58 - 103
+
+// const App: React.FC = () => {
+
+//   const [ state, dispatch ] = useReducer( reducer, [] as Todo[]);
+  
+//   const [ todo, setTodo ] = useState <string> ("")
+//   const [ todos, setTodos ] = useState <Todo[]> ([])
+
+//   const handleAdd = (e: React.FormEvent) => {
+//     e.preventDefault();
+
+//     if ( todo ) {
+
+//       let newItem: Todo = {
+//         id: Date.now(),
+//         todo,
+//         isDone: false
+//       }
+      
+//       setTodos([
+//         ...todos,
+//         newItem
+//       ])
+
+//       setTodo('');
+
+//     }
+//   }
+
+//   return (
+//     <div className="App">
+
+//       <InputField 
+//         todo={todo} 
+//         setTodo={setTodo} 
+//         handleAdd={handleAdd}
+//       />
+
+//       <TodoList todos={todos} setTodos={setTodos} />
+
+//     </div>
+//   );
+
+// }
+
+// export default App;
