@@ -14,6 +14,11 @@ const SingleTodo = ({ todos, todo, setTodos } : Props) => {
     setTodos( todos.map( todo => todo.id === id ? { ...todo, isDone: !todo.isDone } : todo ) )
   }
 
+  const handleDelete = (id: number) => {
+    // console.log(id);
+    setTodos( todos.filter( todo => todo.id !== id ));
+  }
+
   return (
     <form className="todos__single">
 
@@ -24,7 +29,7 @@ const SingleTodo = ({ todos, todo, setTodos } : Props) => {
 
       <div>
         <span className="icon"> <MdEdit /> </span>
-        <span className="icon"> <MdDelete /> </span>
+        <span className="icon" onClick={() => handleDelete(todo.id)}> <MdDelete /> </span>
         <span className="icon" onClick={ () => handleDone(todo.id)}> <MdDone /> </span>
       </div>
 
