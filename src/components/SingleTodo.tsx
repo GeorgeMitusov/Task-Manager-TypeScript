@@ -12,6 +12,7 @@ const SingleTodo = ({ todo, dispatch } : Props ) => {
 
   const [ isEdit, setIsEdit] = useState<Boolean>(false);
   const [ editValue, setEditValue] = useState<string>(todo.todo);
+  const inputRef = useRef <HTMLInputElement> (null)
 
   function handleDone(id:number) {
     dispatch({ type: ACTIONS.COMPLETE_TODO, payload: id })
@@ -48,22 +49,19 @@ const SingleTodo = ({ todo, dispatch } : Props ) => {
     <input 
       type="text"
       value={editValue}
+      ref={inputRef}
       onChange={ e => setEditValue(e.target.value) }
       onKeyDown={ e => handleEnterPress(e, todo.id) } 
       className="todos-single-form-input" 
     />
   )
 
-  // const todoInput = (
-  //   <input 
-  //     type="text"
-  //     ref={inputRef}
-  //     value={editValue}
-  //     onChange={ e => setEditValue(e.target.value) }
-  //     onKeyDown={ e => handleEnterPress(e, todo.id) } 
-  //     className="todos-single-form-input" 
-  //   />
-  // )
+  useEffect(() => {
+
+    inputRef.current?.focus();
+   
+  }, [isEdit])
+  
 
   return (
     <form className="todos__single">
