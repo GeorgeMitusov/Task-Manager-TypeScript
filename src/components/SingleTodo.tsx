@@ -5,21 +5,21 @@ import { ACTIONS } from '../actions/actions';
 
 interface Props {
   todo: Todo,
-  dispatch: React.Dispatch<any>
+  todosDispatch: React.Dispatch<any>
 }
 
-const SingleTodo = ({ todo, dispatch } : Props ) => {
+const SingleTodo = ({ todo, todosDispatch } : Props ) => {
 
   const [ isEdit, setIsEdit] = useState<Boolean>(false);
   const [ editValue, setEditValue] = useState<string>(todo.todo);
   const inputRef = useRef <HTMLInputElement> (null)
 
   function handleDone(id:number) {
-    dispatch({ type: ACTIONS.COMPLETE_TODO, payload: id })
+    todosDispatch({ type: ACTIONS.COMPLETE_TODO, payload: id })
   }
 
   function handleRemove(id:number) {
-    dispatch({ type: ACTIONS.REMOVE_TODO, payload: id })
+    todosDispatch({ type: ACTIONS.REMOVE_TODO, payload: id })
   }
 
   function handleEditing() {
@@ -33,7 +33,7 @@ const SingleTodo = ({ todo, dispatch } : Props ) => {
     if ( e.key === "Enter" ) {
       setIsEdit(false);
 
-      dispatch({ type: ACTIONS.EDIT_TODO, payload: { value: editValue, id } })
+      todosDispatch({ type: ACTIONS.EDIT_TODO, payload: { value: editValue, id } })
     }
 
   }
