@@ -87,14 +87,14 @@ body {
   box-shadow: 0 0 5px black;
 }
 
-/* .container {
+.container {
   width: 95%;
   display: flex;
   margin-top: 10px;
   justify-content: space-between;
   align-items: flex-start;
-  border: 3px solid blue;
-} */
+  border: 1px solid blue;
+}
 
 .todos {
   width: 90% !important;
@@ -117,7 +117,7 @@ body {
 }
 
 .remove {
-  background-color: rgb(235, 103, 80);
+  background-color: #C4501B;
 }
 
 .todos__heading {
