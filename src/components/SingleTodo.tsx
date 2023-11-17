@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Todo } from './model';
 import { MdDone, MdEdit, MdDelete } from "react-icons/md";
+import { ACTIONS } from '../actions/actions';
 
 interface Props {
   todo: Todo,
@@ -10,14 +11,14 @@ interface Props {
 const SingleTodo = ({ todo, dispatch } : Props ) => {
 
   const [ isEdit, setIsEdit] = useState<Boolean>(false);
-  const [ editValue, setEditValue] = useState<string | number>(todo.todo);
+  const [ editValue, setEditValue] = useState<string>(todo.todo);
 
   function handleDone(id:number) {
-    dispatch({ type: 'complete', payload: id })
+    dispatch({ type: ACTIONS.COMPLETE_TODO, payload: id })
   }
 
   function handleRemove(id:number) {
-    dispatch({ type: 'remove', payload: id })
+    dispatch({ type: ACTIONS.REMOVE_TODO, payload: id })
   }
 
   function handleEditing() {
@@ -26,10 +27,14 @@ const SingleTodo = ({ todo, dispatch } : Props ) => {
     }
   }
 
-  function handleSubmit(e: React.FormEvent, id: number) {
-    e.preventDefault();
-    console.log(e);
-    console.log(id);
+  function handleEnterPress(e: React.KeyboardEvent<HTMLInputElement>, id: number) {
+
+    if ( e.key === "Enter" ) {
+      setIsEdit(false);
+
+      dispatch({ type: ACTIONS.EDIT_TODO, payload: { value: editValue, id } })
+    }
+
   }
 
   const todoTitle = (
@@ -44,6 +49,7 @@ const SingleTodo = ({ todo, dispatch } : Props ) => {
       type="text"
       value={editValue}
       onChange={ e => setEditValue(e.target.value) }
+      onKeyDown={ e => handleEnterPress(e, todo.id) } 
       className="todos-single-form-input" 
     />
   )
@@ -60,7 +66,7 @@ const SingleTodo = ({ todo, dispatch } : Props ) => {
   // )
 
   return (
-    <form className="todos__single" onSubmit={e => handleSubmit(e, todo.id)}>
+    <form className="todos__single">
 
       { isEdit ? todoInput : todoTitle }
 

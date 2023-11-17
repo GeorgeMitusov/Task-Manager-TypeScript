@@ -1,10 +1,12 @@
-// export const ACTIONS = {
-//   ADD_TODO: 'add-todo',
-//   REMOVE_TODO: 'remove-todo',
-//   COMPLETE_TODO: 'complete-todo',
-// }
+export enum ACTIONS {
+  ADD_TODO = 'add-todo',
+  REMOVE_TODO = 'remove-todo',
+  COMPLETE_TODO = 'complete-todo',
+  EDIT_TODO = 'edit-todo',
+}
 
 export type Actions = 
-  | { type: 'add'; payload: string }
-  | { type: 'remove'; payload: number }
-  | { type: 'complete'; payload: number }
+  | { type: typeof ACTIONS.ADD_TODO; payload: string }
+  | { type: typeof ACTIONS.COMPLETE_TODO; payload: number }
+  | { type: typeof ACTIONS.REMOVE_TODO; payload: number }
+  | { type: typeof ACTIONS.EDIT_TODO; payload: { value: string, id: number } }

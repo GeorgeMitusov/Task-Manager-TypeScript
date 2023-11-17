@@ -5,6 +5,7 @@ import InputField from './components/InputField';
 import { reducer } from './reducer/reducer';
 import { Todo } from './components/model';
 import TodoList from './components/TodoList';
+import { ACTIONS } from './actions/actions';
 
 const App: React.FC = () => {
 
@@ -12,7 +13,7 @@ const App: React.FC = () => {
   const [ todo, setTodo ] = useState<string>('');
 
   function handleAdd() {
-    dispatch({ type: 'add', payload: todo });
+    dispatch({ type: ACTIONS.ADD_TODO, payload: todo });
     setTodo('');
   }
 

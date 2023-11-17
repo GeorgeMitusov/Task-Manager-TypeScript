@@ -1,9 +1,11 @@
 import { Todo } from '../components/model';
 import { Actions } from '../actions/actions';
+import { ACTIONS } from '../actions/actions';
+
 
 export const reducer = ( state: Todo[], action: Actions ): Todo[] => {
   switch (action.type) {
-    case 'add':
+    case ACTIONS.ADD_TODO:
       let newItem: Todo = {
         id: Date.now(),
         todo: action.payload,
@@ -11,11 +13,14 @@ export const reducer = ( state: Todo[], action: Actions ): Todo[] => {
       }
       return [ ...state, newItem ];
 
-    case "complete":
+    case ACTIONS.COMPLETE_TODO:
       return state.map( todo => todo.id === action.payload ? { ...todo, isDone: !todo.isDone } : todo )
 
-    case 'remove':
+    case ACTIONS.REMOVE_TODO:
       return state.filter( todo => todo.id !== action.payload )
+
+    case ACTIONS.EDIT_TODO:
+      return state.map( todo => todo.id === action.payload.id ? { ...todo, todo: action.payload.value } : todo )
   
     default:
       return state;
