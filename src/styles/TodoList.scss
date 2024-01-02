@@ -1,0 +1,39 @@
+.todos {
+  width: 90% !important;
+  min-height: 14vh;
+  border-radius: 1.5rem;
+  margin-top: 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: transparent;
+  // border: 1px solid blue;
+  overflow: hidden;
+
+  .todos-container {
+    width: 100%;
+    height: 100%;
+    padding: 4rem;
+    border-radius: 1.5rem;
+
+    background-color: #0f5132;
+
+    // border: 1px solid red;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .todos-title {
+      font-size: 30px;
+      color: white;
+    }
+
+    .title-empty {
+      margin-top: 4rem;
+    }
+  }
+}
