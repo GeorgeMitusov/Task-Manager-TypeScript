@@ -66,3 +66,31 @@
     box-shadow: 0 0 5px index.$black-color;
   }
 }
+
+@media screen and (max-width: 550px) {
+  .todo {
+    padding: 10px;
+    // width: 90%;
+
+    .todo-panel {
+
+      .todo-panel-icon {
+        // font-size: 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .todo {
+    width: 90%;
+
+    .todo-panel {
+
+      .todo-panel-icon {
+        font-size: 20px;
+      }
+    }
+  }
+}
+

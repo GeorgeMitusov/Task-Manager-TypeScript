@@ -6,10 +6,12 @@
   // border: 1px solid red;
   margin: 1rem 0rem;
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 3%;
 
   .todo-search-input {
-    flex: 8;
+    width: 75%;
     height: 100%;
     padding-left: 5%;
     border-radius: 1rem;
@@ -20,7 +22,7 @@
   }
 
   .todo-search-btn {
-    flex: 2;
+    width: 25%;
     height: 100%;
     cursor: pointer;
     border: none;
@@ -43,3 +45,30 @@
     }
   }
 }
+
+@media screen and (max-width: 1440px) {
+  .todo-search {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .todo-search {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .todo-search {
+    width: 65%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .todo-search {
+    width: 85%;
+  }
+}
+
+
+

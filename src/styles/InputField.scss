@@ -32,11 +32,11 @@
     border: none;
     font-size: 15px;
     background-color: index.$third-color;
-    
+
     color: index.$white-color;
     box-shadow: 0 0 10px index.$black-color;
     cursor: pointer;
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
 
     &:hover {
       background-color: index.$secondary-color;
@@ -45,6 +45,32 @@
     &:active {
       transform: scale(0.8);
       box-shadow: 0 0 5px index.$black-color;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .input-form {
+    .input-field {
+      padding: 15px 20px;
+      font-size: 1.5rem;
+    }
+
+    .input-submit {
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .input-form {
+    .input-field {
+      padding: 15px;
+      font-size: 1rem;
+    }
+
+    .input-submit {
+      height: 40px;
+      width: 40px;
     }
   }
 }
