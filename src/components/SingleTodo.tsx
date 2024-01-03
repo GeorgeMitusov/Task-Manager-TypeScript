@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Todo } from "./model";
 import { MdDone, MdEdit, MdDelete, MdDoneAll } from "react-icons/md";
 import { ACTIONS } from "../actions/actions";
+import { motion } from "framer-motion";
 
 import "../styles/SingleTodo.scss";
 
@@ -14,6 +15,7 @@ const SingleTodo = ({ todo, todosDispatch }: Props) => {
   const [isEdit, setIsEdit] = useState<Boolean>(false);
   const [editValue, setEditValue] = useState<string>(todo.todo);
   const inputRef = useRef<HTMLInputElement>(null);
+  const todoRef = useRef<HTMLSpanElement>(null);
 
   function handleDone(id: number) {
     todosDispatch({ type: ACTIONS.COMPLETE_TODO, payload: id });
@@ -48,17 +50,42 @@ const SingleTodo = ({ todo, todosDispatch }: Props) => {
     setEditValue(todo.todo);
   }
 
+  function handleMouseEnter() {
+    if (todoRef.current) {
+      const element = todoRef.current;
+      if (!todo.isDone) {
+        element.style.color = "lightgray";
+      } else {
+        element.style.color = "darkslategray";
+      }
+    }
+  }
+
+  function handleMouseLeave() {
+    if (todoRef.current) {
+      const element = todoRef.current;
+      if (!todo.isDone) {
+        element.style.color = "white";
+      } else {
+        element.style.color = "gray";
+      }
+    }
+  }
+
   const todoTitle = (
     <span
+      ref={todoRef}
       className="todo-title"
       style={{
         textDecoration: todo.isDone ? "line-through" : "none",
         color: todo.isDone ? "gray" : "white",
+        transition: "all 0.3s ease-in",
       }}
       onClick={() => handleDone(todo.id)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      {" "}
-      {todo.todo}{" "}
+      {todo.todo}
     </span>
   );
 
@@ -78,11 +105,16 @@ const SingleTodo = ({ todo, todosDispatch }: Props) => {
   }, [isEdit]);
 
   return (
-    <form className="todo">
+    <motion.form
+      className="todo"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ ease: "linear", duration: .5 }}
+    >
       {isEdit ? todoInput : todoTitle}
 
       <div className="todo-panel">
-
         {isEdit ? (
           <span className="todo-panel-icon edit" onClick={handleEditOff}>
             {" "}
@@ -110,7 +142,7 @@ const SingleTodo = ({ todo, todosDispatch }: Props) => {
           <MdDone />{" "}
         </span>
       </div>
-    </form>
+    </motion.form>
   );
 };
 

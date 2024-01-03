@@ -1,3 +1,5 @@
+@use "index";
+
 .input-form {
   display: flex;
   width: 95%;
@@ -12,7 +14,7 @@
     font-size: 25px;
     border: none;
     transition: 0.2s;
-    box-shadow: inset 0 0 5px black;
+    box-shadow: inset 0 0 5px index.$black-color;
 
     &:focus {
       box-shadow: 0 0 10px 1000px rgba(0, 0, 0, 0.5);
@@ -29,19 +31,20 @@
     right: 0px;
     border: none;
     font-size: 15px;
-    background-color: #1b4d3e;
-    color: white;
-    transition: 0.2s all;
-    box-shadow: 0 0 10px black;
+    background-color: index.$third-color;
+    
+    color: index.$white-color;
+    box-shadow: 0 0 10px index.$black-color;
     cursor: pointer;
+    transition: all .2s ease-in;
 
     &:hover {
-      background-color: #006a4e;
+      background-color: index.$secondary-color;
     }
 
     &:active {
       transform: scale(0.8);
-      box-shadow: 0 0 5px black;
+      box-shadow: 0 0 5px index.$black-color;
     }
   }
 }

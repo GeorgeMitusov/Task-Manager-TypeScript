@@ -10,6 +10,8 @@ import { ACTIONS } from "./actions/actions";
 const App: React.FC = () => {
   const [todos, todosDispatch] = useReducer(reducer, [] as Todo[]);
   const [todo, setTodo] = useState<string>("");
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [isSearching, setIsSearching] = useState<boolean>(false);
 
   function handleAdd() {
     todosDispatch({ type: ACTIONS.ADD_TODO, payload: todo });
@@ -23,7 +25,14 @@ const App: React.FC = () => {
       <div className="app-container">
         <InputField todo={todo} setTodo={setTodo} handleAdd={handleAdd} />
 
-        <TodoList todos={todos} todosDispatch={todosDispatch} />
+        <TodoList
+          todos={todos}
+          todosDispatch={todosDispatch}
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+          isSearching={isSearching}
+          setIsSearching={setIsSearching}
+        />
       </div>
     </div>
   );

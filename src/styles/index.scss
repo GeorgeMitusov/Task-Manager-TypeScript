@@ -1,0 +1,32 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
+
+$black-color: black;
+$white-color: white;
+$primary-color: #166d3b;
+$secondary-color: #006a4e;
+$third-color: #1b4d3e;
+$fourth-color: #0f5132;
+$fifth-color: #9ab69b;
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $primary-color;
+  background-image: linear-gradient(
+    147deg,
+    $primary-color 0%,
+    $black-color 74%
+  );
+  color: $white-color;
+  font-size: 1rem;
+}

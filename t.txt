@@ -1,0 +1,4 @@
+1. search bar 
+2. completed tasks archive 
+3. drag and drop 
+4. 

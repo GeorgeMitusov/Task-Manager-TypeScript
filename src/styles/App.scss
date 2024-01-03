@@ -1,27 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700&display=swap");
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #166d3b;
-  background-image: linear-gradient(147deg, #166d3b 0%, #000000 74%);
-
-  color: white;
-  font-family: "Raleway", sans-serif;
-  font-size: 1rem;
-}
+@use "index";
 
 .App {
   width: 100%;
   height: 100vh;
+  overflow-y: auto;
+  padding-bottom: 4rem;
 
-  display: flex;
+  @extend %flex;
   justify-content: start;
-  align-items: center;
   flex-direction: column;
 
   .app-title {
@@ -30,11 +16,9 @@ body {
   }
 
   .app-container {
+    @extend %flex;
     width: 70%;
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-    align-items: center;
   }
 }
 

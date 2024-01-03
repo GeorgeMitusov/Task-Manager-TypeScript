@@ -1,12 +1,12 @@
+@use "index";
+
 .todo {
   width: 95%;
   display: flex;
   border-radius: 5px;
   padding: 20px;
   margin-top: 1rem;
-  background-color: #9ab69b;
-  transition: 0.2s;
-
+  background-color: index.$fifth-color;
   transition: all 0.5s ease-in-out;
 
   // border: 1px solid red;
@@ -30,16 +30,11 @@
     &:focus {
       outline: none;
     }
-
-    &:hover {
-      color: red;
-    }
   }
 
   .todo-panel {
     // border: 1px solid yellow;
-    display: flex;
-    align-items: center;
+    @extend %flex;
     justify-content: space-evenly;
     flex: 1;
 
@@ -47,15 +42,15 @@
       margin-left: 10px;
       font-size: 25px;
       cursor: pointer;
-      transition: all .3s ease-in-out;
+      transition: all 0.3s ease-in-out;
 
       &:hover {
-        transform: scale(.9);
+        transform: scale(0.9);
       }
     }
 
     .edit:hover {
-      color: #1b4d3e;
+      color: index.$third-color;
     }
 
     .delete:hover {
@@ -63,11 +58,11 @@
     }
 
     .done:hover {
-      color: #006a4e;
+      color: index.$secondary-color;
     }
   }
 
   &:hover {
-    box-shadow: 0 0 5px black;
+    box-shadow: 0 0 5px index.$black-color;
   }
 }
