@@ -13,11 +13,11 @@ const InputField = ({ todo, setTodo, handleAdd }: Props) => {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
 
-    if (todo.trim() !== '') {
+    if (todo.trim() !== "") {
       handleAdd(e);
     } else {
-      alert("Can't be empty.")      
-      setTodo('');
+      alert("Can't be empty.");
+      setTodo("");
     }
 
     inputRef.current?.blur();

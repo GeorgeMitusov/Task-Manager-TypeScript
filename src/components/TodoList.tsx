@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Search from "./Search";
 import "../styles/TodoList.scss";
 
-
 interface Props {
   todos: Todo[];
   todosDispatch: React.Dispatch<any>;
@@ -23,6 +22,8 @@ const TodoList: React.FC<Props> = ({
   isSearching,
   setIsSearching,
 }) => {
+  console.log(todos);
+
   const searchFilter = todos.filter((item) =>
     item.todo.toLowerCase().includes(searchValue.toLowerCase())
   );
@@ -41,8 +42,19 @@ const TodoList: React.FC<Props> = ({
         animate={{ y: 0, opacity: 1 }}
         transition={{ ease: "linear", duration: 1, delay: 1 }}
       >
-
-        <h6 className="todos-title"> Active tasks</h6>
+        {/* DOESNT WORK!!! */}
+        <AnimatePresence>
+          <motion.span
+            className="todos-title"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ ease: "linear", duration: 1 }}
+          >
+            {" "}
+            Active tasks
+          </motion.span>{" "}
+        </AnimatePresence>
 
         <Search
           searchValue={searchValue}
@@ -54,11 +66,7 @@ const TodoList: React.FC<Props> = ({
         {todos.length === 0 && (
           <h1 className="title-empty"> Your list is empty. </h1>
         )}
-
-        
-        <AnimatePresence>
-          {todo}
-        </AnimatePresence>
+        <AnimatePresence>{todo}</AnimatePresence>
       </motion.div>
     </div>
   );
