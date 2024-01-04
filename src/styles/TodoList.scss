@@ -7,7 +7,6 @@
   margin-top: 2rem;
   @extend %flex;
   background-color: transparent;
-  // border: 1px solid blue;
   overflow: hidden;
 
   .todos-container {
@@ -19,8 +18,6 @@
     background-color: index.$fourth-color;
     @extend %flex;
     flex-direction: column;
-
-    // border: 1px solid red;
 
     .todos-title {
       font-size: 30px;
@@ -54,6 +51,36 @@
 
     .title-empty {
       margin-top: 4rem;
+    }
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .todos {
+    .todos-container {
+      .btn-show-done {
+        width: 25%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .todos {
+    .todos-container {
+      .todo-done-empty-title {
+        font-size: 1.4rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .todos {
+    .todos-container {
+      .todo-done-empty-title {
+        font-size: 1.1rem;
+      }
     }
   }
 }

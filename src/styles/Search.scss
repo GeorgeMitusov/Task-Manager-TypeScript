@@ -3,7 +3,6 @@
 .todo-search {
   width: 20%;
   height: 2rem;
-  // border: 1px solid red;
   margin: 1rem 0rem;
   display: flex;
   align-items: center;
@@ -28,12 +27,15 @@
     border: none;
     border-radius: 1rem;
     font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: index.$third-color;
-    
+
     color: index.$white-color;
     box-shadow: 0 0 3px index.$black-color;
     cursor: pointer;
-    transition: all .2s ease-in;
+    transition: all 0.2s ease-in;
 
     &:hover {
       background-color: index.$secondary-color;
@@ -69,6 +71,3 @@
     width: 85%;
   }
 }
-
-
-

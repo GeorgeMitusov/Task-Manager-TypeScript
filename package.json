@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "@types/node-sass": "^4.11.7"
+    "@types/node-sass": "^4.11.7",
+    "@types/react-beautiful-dnd": "^13.1.8"
   }
 }

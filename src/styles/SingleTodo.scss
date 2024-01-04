@@ -9,11 +9,8 @@
   background-color: index.$fifth-color;
   transition: all 0.5s ease-in-out;
 
-  // border: 1px solid red;
-
   .todo-form-input {
     flex: 8;
-    // border: 1px solid red;
     padding: 0rem 1rem;
   }
 
@@ -25,15 +22,12 @@
     cursor: pointer;
     transition: all 0.1s ease-in-out;
 
-    // border: 1px solid purple;
-
     &:focus {
       outline: none;
     }
   }
 
   .todo-panel {
-    // border: 1px solid yellow;
     @extend %flex;
     justify-content: space-evenly;
     flex: 1;
@@ -70,14 +64,6 @@
 @media screen and (max-width: 550px) {
   .todo {
     padding: 10px;
-    // width: 90%;
-
-    .todo-panel {
-
-      .todo-panel-icon {
-        // font-size: 20px;
-      }
-    }
   }
 }
 
@@ -86,11 +72,9 @@
     width: 90%;
 
     .todo-panel {
-
       .todo-panel-icon {
         font-size: 20px;
       }
     }
   }
 }
-
