@@ -110,7 +110,7 @@ const SingleTodo = ({ todo, todosDispatch }: Props) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ ease: "linear", duration: .5 }}
+      transition={{ ease: "linear", duration: .5, delay: .2 }}
     >
       {isEdit ? todoInput : todoTitle}
 

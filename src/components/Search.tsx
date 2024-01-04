@@ -39,7 +39,7 @@ const Search: React.FC<Props> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ ease: "linear", duration: 1 }}
+            transition={{ ease: "linear", duration: .5 }}
           />
         )}
       </AnimatePresence>

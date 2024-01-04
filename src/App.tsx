@@ -14,6 +14,7 @@ const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [searchValue, setSearchValue] = useState<string>("");
   const [isSearching, setIsSearching] = useState<boolean>(false);
+  const [isDoneShowing, setIsDoneShowing] = useState<boolean>(false);
 
   function loadTodosFromLocalStorage(): Todo[] {
     const storedTodos = localStorage.getItem(STORAGE_KEY);
@@ -43,6 +44,9 @@ const App: React.FC = () => {
           searchValue={searchValue}
           isSearching={isSearching}
           setIsSearching={setIsSearching}
+          isDoneShowing={isDoneShowing}
+          setIsDoneShowing={setIsDoneShowing}
+
         />
       </div>
     </div>
